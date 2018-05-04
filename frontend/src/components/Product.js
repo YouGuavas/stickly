@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export class Product extends Component {
   render() {
@@ -13,21 +9,26 @@ export class Product extends Component {
             <div className="columns" style={{minHeight:'800px'}}>
               <div className="column is-6">
                 <div className="image is-2by2">
-                  <img src="https://cdn.scotch.io/2842/b7yhhuUPSGO1fEkMHD6P_sticks.jpeg"/>
+                  <img src={this.props.location.state.image.src} alt={this.props.location.state.image.alt}/>
                 </div>
               </div>
               <div className="column is-5 is-offset-1">
-                <div className="title is-2">Bundle of Sticks</div>
-                <p class="title is-3 has-text-muted">$ 15</p>
+                <div className="title is-2">{this.props.location.state.title}</div>
+                <p className="title is-3 has-text-muted">${this.props.location.state.price}</p>
                 <hr/>
                 <br/>
-                <p>This bundle of sticks provides  an earthy fragrance and aesthetic natural appeal. 
-                Your bundle of sticks will come with a personalized note. 
-                The perfect natural gift for any time of year!</p>
+                <p>{this.props.location.state.description}</p>
                 <br/>
                 <br/>
-                <p class='level'>
-                  <Link to="/order" class="button is-large is-primary level-item has-text-centered">Buy Now</Link>
+                <p className='level'>
+                  <Link to={{pathname:"/order", state: {
+                    description: this.props.location.state.description,
+                    amount: this.props.location.state.price,
+                    image: {
+                      src: this.props.location.state.image.src,
+                      alt: this.props.location.state.image.alt
+                    }
+                  }}} className="button is-large is-primary level-item has-text-centered">Buy Now</Link>
                 </p>
               </div>
             </div>

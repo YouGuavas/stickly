@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Order} from './Order';
+import {Store} from './Store';
 import {Product} from './Product';
 import {
   BrowserRouter as Router,
@@ -35,9 +36,10 @@ export class BasicExample extends Component {
               <hr/>
             </nav>
           </div>
-          <Route exact path='/' component={Product}/>
+          <Route exact path='/' component={Store}/>
           <Route path='/about' component={About}/>
-          <Route path='/order' render={(props) => <Order {...props} description="A bundle of sticks" amount='15'/>}/>
+          <Route path='/product' component={Product}/>
+          <Route path='/order' component={Order}/>
         </div>
       </Router>
     )

@@ -22,37 +22,21 @@ const onToken = (amount, description) => token => axios.post(PAYMENT_SERVER_URL,
 .catch(errorPayment);
 
 export class Order extends Component {
-	handleChange = e => {
-			this.setState({
-				[e.target.title]:e.target.value
-			});
-	}
-	constructor(props) {
-		super(props);
-		this.state = {
-			name: ''
-		}
-	}
 	render() {
 		return(
 			<div className='container'>
 				<div className='columns'>
 					<div className='column is-6'>
-	            <img src="https://cdn.scotch.io/2842/b7yhhuUPSGO1fEkMHD6P_sticks.jpeg"/>
+	            <img src={this.props.location.state.image.src} alt={this.props.location.state.image.alt}/>
 	         </div>
-					<div className='column is-6' id='thisId'>
-						<div className='field'>
-							<label>Name</label>
-							<div className='control has-icons-left has-icons-right'>
-								<input title='name' type='text' className='input' placeholder='First and Last' onChange={this.handleChange} />
-								<span className='icon is-small is-left'>
-									<i className='fa fa-user'></i>
-								</span>
-							</div>
-						</div>
-							<script src="https://checkout.stripe.com/checkout.js"></script>
-							<StripeCheckout name={this.state.name} description={this.props.description} amount={fromUsdToCent(this.props.amount)} token={onToken(this.props.amount, this.props.description)} currency={CURRENCY} stripeKey={STRIPE_PUBLISHABLE}>
-								<button className='column is-12 button is-large is-primary'>Buy Now</button>
+					<div className='column is-offset-1' id='thisId'>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+							<StripeCheckout description={this.props.location.state.description} amount={fromUsdToCent(this.props.location.state.amount)} token={onToken(this.props.location.state.amount, this.props.location.state.description)} currency={CURRENCY} stripeKey={STRIPE_PUBLISHABLE}>
+								<button className='column is-12 button is-large is-primary has-text-centered'>Pay with Card</button>
 							</StripeCheckout>
 					</div>
 					</div>
