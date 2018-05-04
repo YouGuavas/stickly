@@ -1,0 +1,12 @@
+h2 { text-decoration: underline; }
+.textarea:not([rows]) { max-height: 110px; min-height: 110px; }
+.container {
+	margin-bottom: 30px;
+}
+.column > img { margin-top: 60px; }
+.button-field { display: flex; justify-content: center; }
+#left-line { margin-top:27px; }
+.stripe-button-el span {
+	background-color: #00d1b2 !important;
+	font-size: 1.5rem;
+}
